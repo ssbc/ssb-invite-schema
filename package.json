@@ -1,0 +1,24 @@
+{
+  "name": "ssb-invites-schema",
+  "version": "1.0.0",
+  "description": "Schema for ssb invite types",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape 'test/**/*.test.js' | tap-spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kgibb8/ssb-invite-schema.git"
+  },
+  "author": "Kyphae",
+  "license": "ISC",
+  "homepage": "https://github.com/kgibb8/ssb-invite-schema#readme",
+  "devDependencies": {
+    "tap-spec": "^4.1.1",
+    "tape": "^4.9.0"
+  },
+  "dependencies": {
+    "is-my-json-valid": "^2.17.2",
+    "ssb-ref": "^2.11.1"
+  }
+}
