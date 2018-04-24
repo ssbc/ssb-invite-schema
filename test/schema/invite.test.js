@@ -25,8 +25,26 @@ Test('invite is valid', (t) => {
   t.end()
 })
 
-Test('invite is not valid', (t) => {
-  var invalidInvite = { type: 'invite' }
+Test('missing root: invite is not valid', (t) => {
+  var invalidInvite = {
+    type: 'invite',
+    version: 'v1',
+    recps: [
+      '@EJq0UuR1gFJFs+8STga0AbYdt5IYQ4YsTr0niycscfg=.ed25519',
+      '@MFz/AT3ldQoPaRPLjBSXTorLG1TZdyXtApJRmNNMjjg=.ed25519'
+    ]
+  }
+
+  t.notOk(validate(invalidInvite))
+  t.end()
+})
+
+Test('missing recps: invite is not valid', (t) => {
+  var invalidInvite = {
+    type: 'invite',
+    version: 'v1',
+    root: '%MPB9vxHO0pvi2ve2wh6Do05ZrV7P6ZjUQ+IEYnzLfTs=.sha256',
+  }
 
   t.notOk(validate(invalidInvite))
   t.end()
