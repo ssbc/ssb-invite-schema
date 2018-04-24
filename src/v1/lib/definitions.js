@@ -1,4 +1,4 @@
-const {  msgIdRegex, feedIdRegex, blobIdRegex } = require('ssb-ref')
+const { msgIdRegex, feedIdRegex, blobIdRegex } = require('ssb-ref')
 
 module.exports = {
   messageId: {
@@ -23,7 +23,7 @@ module.exports = {
     },
     feed: {
       type: 'object',
-      required: ['link', 'name'],
+      required: ['name', 'link'],
       properties: {
         link: { $ref: '#/definitions/feedId' },
         name: { type: 'string' }
@@ -35,6 +35,15 @@ module.exports = {
       properties: {
         link: { $ref: '#/definitions/blobId' },
         name: { type: 'string' }
+      }
+    },
+    feeds: {
+      type: 'array',
+      items: {
+        oneOf: [
+          { $ref: '#/definitions/feedId' },
+          { $ref: '#/definitions/mentions/feed' }
+        ]
       }
     }
   },

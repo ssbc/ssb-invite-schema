@@ -6,15 +6,24 @@ module.exports = {
   required: ['version', 'type', 'root', 'body', 'recps'],
   properties: {
     version: { type: 'string' },
+    module: { type: 'string' },
     type: {
       type: 'string',
       pattern: '^invite$'
     },
-    root: { $ref: '#/definition/messageId' },
-    expiresAt: { type: 'string', format: 'date-time' },
+    root: {
+      oneOf: [
+        { type: 'null' },
+        { $ref: '#/definitions/messageId' },
+      ]
+    },
+    expiresAt: {
+      type: 'string',
+      format: 'date-time'
+    },
     body: { type: 'string' },
-    recps: { $ref: '#/definitions/recps' },
-    mentions: { $ref: '#/definitions/mentions/feed' }
+    mentions: { $ref: '#/definitions/mentions/feeds' },
+    recps: { $ref: '#/definitions/recps' }
   },
   definitions: definitions
 }
