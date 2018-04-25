@@ -7,9 +7,9 @@ module.exports = {
   },
   feedId: {
     type: 'string',
-    pattern: feedIdRegex,
+    pattern: feedIdRegex
   },
-  blobIdRegex: {
+  blobId: {
     type: 'string',
     pattern: blobIdRegex
   },
@@ -37,14 +37,23 @@ module.exports = {
         name: { type: 'string' }
       }
     },
-    feeds: {
-      type: 'array',
-      items: {
-        oneOf: [
-          { $ref: '#/definitions/feedId' },
-          { $ref: '#/definitions/mentions/feed' }
-        ]
-      }
+    any: {
+      oneOf: [
+        { type: 'null' },
+        {
+          type: 'array',
+          items: {
+            oneOf: [
+              { $ref: '#/definitions/feedId' },
+              { $ref: '#/definitions/messageId' },
+              { $ref: '#/definitions/blobId' },
+              { $ref: '#/definitions/mentions/message' },
+              { $ref: '#/definitions/mentions/feed' },
+              { $ref: '#/definitions/mentions/blob' }
+            ]
+          }
+        }
+      ]
     }
   },
   recps: {
