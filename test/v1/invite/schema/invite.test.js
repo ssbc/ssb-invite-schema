@@ -1,7 +1,7 @@
 const Test = require('tape')
 const Validator = require('is-my-json-valid')
 
-const inviteSchema = require('../../src/schema/invite')
+const inviteSchema = require('../../../../src/schema/invite')
 const validate = Validator(inviteSchema)
 
 Test('invite is valid', (t) => {

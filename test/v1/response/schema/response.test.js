@@ -1,7 +1,7 @@
 const Test = require('tape')
 const Validator = require('is-my-json-valid')
 
-const responseSchema = require('../../src/schema/response')
+const responseSchema = require('../../../../src/schema/response')
 const validate = Validator(responseSchema)
 
 Test('response is valid', (t) => {
