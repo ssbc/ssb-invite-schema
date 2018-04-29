@@ -4,7 +4,7 @@ const Validator = require('is-my-json-valid')
 const responseSchema = require('../../../../src/schema/response')
 const validate = Validator(responseSchema)
 
-Test('response is valid', (t) => {
+Test('response is valid', (assert) => {
   var response = {
     version: 'v1',
     module: 'secrets',
@@ -22,11 +22,11 @@ Test('response is valid', (t) => {
     ]
   }
 
-  t.ok(validate(response))
-  t.end()
+  assert.ok(validate(response))
+  assert.end()
 })
 
-Test('missing root: response is not valid', (t) => {
+Test('missing root: response is not valid', (assert) => {
   var response = {
     type: 'response',
     version: 'v1',
@@ -38,11 +38,11 @@ Test('missing root: response is not valid', (t) => {
     ]
   }
 
-  t.notOk(validate(response))
-  t.end()
+  assert.notOk(validate(response))
+  assert.end()
 })
 
-Test('missing branch: response is not valid', (t) => {
+Test('missing branch: response is not valid', (assert) => {
   var response = {
     type: 'response',
     version: 'v1',
@@ -54,22 +54,22 @@ Test('missing branch: response is not valid', (t) => {
     ]
   }
 
-  t.notOk(validate(response))
-  t.end()
+  assert.notOk(validate(response))
+  assert.end()
 })
 
-Test('missing recps: response is not valid', (t) => {
+Test('missing recps: response is not valid', (assert) => {
   var response = {
     type: 'response',
     version: 'v1',
     root: '%MPB9vxHO0pvi2ve2wh6Do05ZrV7P6ZjUQ+IEYnzLfTs=.sha256',
   }
 
-  t.notOk(validate(response))
-  t.end()
+  assert.notOk(validate(response))
+  assert.end()
 })
 
-Test('missing accept: response is not valid', (t) => {
+Test('missing accept: response is not valid', (assert) => {
   var response = {
     type: 'response',
     version: 'v1',
@@ -81,7 +81,7 @@ Test('missing accept: response is not valid', (t) => {
     ]
   }
 
-  t.notOk(validate(response))
-  t.end()
+  assert.notOk(validate(response))
+  assert.end()
 })
 

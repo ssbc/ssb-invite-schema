@@ -4,7 +4,7 @@ const Validator = require('is-my-json-valid')
 const inviteSchema = require('../../../../src/schema/invite')
 const validate = Validator(inviteSchema)
 
-Test('invite is valid', (t) => {
+Test('invite is valid', (assert) => {
   var invite = {
     module: 'secrets',
     version: 'v1',
@@ -21,11 +21,11 @@ Test('invite is valid', (t) => {
     ]
   }
 
-  t.ok(validate(invite))
-  t.end()
+  assert.ok(validate(invite))
+  assert.end()
 })
 
-Test('missing root: invite is not valid', (t) => {
+Test('missing root: invite is not valid', (assert) => {
   var invalidInvite = {
     type: 'invite',
     version: 'v1',
@@ -35,17 +35,17 @@ Test('missing root: invite is not valid', (t) => {
     ]
   }
 
-  t.notOk(validate(invalidInvite))
-  t.end()
+  assert.notOk(validate(invalidInvite))
+  assert.end()
 })
 
-Test('missing recps: invite is not valid', (t) => {
+Test('missing recps: invite is not valid', (assert) => {
   var invalidInvite = {
     type: 'invite',
     version: 'v1',
     root: '%MPB9vxHO0pvi2ve2wh6Do05ZrV7P6ZjUQ+IEYnzLfTs=.sha256',
   }
 
-  t.notOk(validate(invalidInvite))
-  t.end()
+  assert.notOk(validate(invalidInvite))
+  assert.end()
 })
