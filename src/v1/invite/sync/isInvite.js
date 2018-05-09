@@ -4,9 +4,9 @@ const validate = Validator(schema, { verbose: true })
 const getContent = require('ssb-msg-content')
 
 module.exports = function isInvite (obj) {
-  const result = validate(getContent(obj))
+  var result = validate(getContent(obj))
 
-  isInvite.errors = validate.errors
+  Object.assign(obj, validate)
 
   return result
 }
