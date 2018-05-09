@@ -8,7 +8,7 @@ module.exports = {
   properties: {
     version: {
       type: 'string',
-      pattern: `^{SCHEMA_VERSION}$`
+      pattern: `^${SCHEMA_VERSION}$`
     },
     module: { type: 'string' },
     type: {
