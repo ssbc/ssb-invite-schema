@@ -1,8 +1,6 @@
 const Test = require('tape')
-const Validator = require('is-my-json-valid')
 
-const responseSchema = require('../../../../src/schema/response')
-const validate = Validator(responseSchema)
+const { isResponse } = require('../../../../')
 
 Test('response is valid', (assert) => {
   var response = {
@@ -22,7 +20,7 @@ Test('response is valid', (assert) => {
     ]
   }
 
-  assert.ok(validate(response))
+  assert.ok(isResponse(response))
   assert.end()
 })
 
@@ -38,7 +36,7 @@ Test('missing root: response is not valid', (assert) => {
     ]
   }
 
-  assert.notOk(validate(response))
+  assert.notOk(isResponse(response))
   assert.end()
 })
 
@@ -54,7 +52,7 @@ Test('missing branch: response is not valid', (assert) => {
     ]
   }
 
-  assert.notOk(validate(response))
+  assert.notOk(isResponse(response))
   assert.end()
 })
 
@@ -65,7 +63,7 @@ Test('missing recps: response is not valid', (assert) => {
     root: '%MPB9vxHO0pvi2ve2wh6Do05ZrV7P6ZjUQ+IEYnzLfTs=.sha256',
   }
 
-  assert.notOk(validate(response))
+  assert.notOk(isResponse(response))
   assert.end()
 })
 
@@ -81,6 +79,6 @@ Test('missing accept: response is not valid', (assert) => {
     ]
   }
 
-  assert.notOk(validate(response))
+  assert.notOk(isResponse(response))
   assert.end()
 })

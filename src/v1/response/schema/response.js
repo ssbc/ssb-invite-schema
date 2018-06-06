@@ -4,11 +4,11 @@ const { SCHEMA_VERSION } = require('../../constants')
 module.exports = {
   $schema: 'http://json-schema.org/schema#',
   type: 'object',
-  required: ['version', 'type', 'root', 'branch', 'recps'],
+  required: ['version', 'type', 'root', 'branch', 'recps', 'accept'],
   properties: {
     version: {
       type: 'string',
-      pattern: `^{SCHEMA_VERSION}$`
+      pattern: `^${SCHEMA_VERSION}$`
     },
     module: { type: 'string' },
     type: {
@@ -32,4 +32,3 @@ module.exports = {
   },
   definitions: definitions
 }
-

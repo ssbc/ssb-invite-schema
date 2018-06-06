@@ -1,8 +1,6 @@
 const Test = require('tape')
-const Validator = require('is-my-json-valid')
 
-const inviteSchema = require('../../../../src/schema/invite')
-const validate = Validator(inviteSchema)
+const { isInvite } = require('../../../../')
 
 Test('invite is valid', (assert) => {
   var invite = {
@@ -21,7 +19,7 @@ Test('invite is valid', (assert) => {
     ]
   }
 
-  assert.ok(validate(invite))
+  assert.ok(isInvite(invite))
   assert.end()
 })
 
@@ -35,7 +33,7 @@ Test('missing root: invite is not valid', (assert) => {
     ]
   }
 
-  assert.notOk(validate(invalidInvite))
+  assert.notOk(isInvite(invalidInvite))
   assert.end()
 })
 
@@ -46,6 +44,6 @@ Test('missing recps: invite is not valid', (assert) => {
     root: '%MPB9vxHO0pvi2ve2wh6Do05ZrV7P6ZjUQ+IEYnzLfTs=.sha256',
   }
 
-  assert.notOk(validate(invalidInvite))
+  assert.notOk(isInvite(invalidInvite))
   assert.end()
 })
