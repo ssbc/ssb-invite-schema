@@ -3,7 +3,7 @@ const definitions = require('../v1/lib/definitions')
 module.exports = {
   $schema: 'http://json-schema.org/schema#',
   type: 'object',
-  required: ['version', 'type', 'root', 'branch', 'recps'],
+  required: ['version', 'type', 'root', 'branch', 'recps', 'accept'],
   properties: {
     version: { type: 'string' },
     module: { type: 'string' },

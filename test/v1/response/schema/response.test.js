@@ -84,4 +84,3 @@ Test('missing accept: response is not valid', (assert) => {
   assert.notOk(validate(response))
   assert.end()
 })
-
