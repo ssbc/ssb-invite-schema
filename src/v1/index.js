@@ -30,11 +30,11 @@ module.exports = {
     })
 
     function isInvite (obj) {
-      return isV1Invite(obj) ? true : undefined
+      return isV1Invite(obj)
     }
 
     function isResponse (obj) {
-      return isV1Response(obj) ? true : undefined
+      return isV1Response(obj)
     }
 
     function versionString (versions) {

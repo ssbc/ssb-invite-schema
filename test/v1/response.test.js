@@ -1,6 +1,6 @@
 const Test = require('tape')
 
-const { isResponse } = require('../../../../')
+const { isResponse } = require('../../')
 
 Test('response is valid', (assert) => {
   var response = {

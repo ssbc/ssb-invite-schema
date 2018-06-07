@@ -1,6 +1,6 @@
 const Test = require('tape')
 
-const { isInvite } = require('../../../../')
+const { isInvite } = require('../../')
 
 Test('invite is valid', (assert) => {
   var invite = {
