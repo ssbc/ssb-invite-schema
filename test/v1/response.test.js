@@ -3,6 +3,8 @@ const Test = require('tape')
 const { isResponse } = require('../../')
 
 Test('response is valid', (assert) => {
+  assert.plan(1)
+
   var response = {
     version: 'v1',
     module: 'secrets',
@@ -21,10 +23,11 @@ Test('response is valid', (assert) => {
   }
 
   assert.ok(isResponse(response))
-  assert.end()
 })
 
 Test('missing root: response is not valid', (assert) => {
+  assert.plan(3)
+
   var response = {
     type: 'response',
     version: 'v1',
@@ -37,10 +40,16 @@ Test('missing root: response is not valid', (assert) => {
   }
 
   assert.notOk(isResponse(response))
-  assert.end()
+
+  errors = response.errors.map(e => e.field)
+
+  assert.equal(errors.length, 1)
+  assert.deepEqual(errors, ['data.root'])
 })
 
 Test('missing branch: response is not valid', (assert) => {
+  assert.plan(3)
+
   var response = {
     type: 'response',
     version: 'v1',
@@ -53,21 +62,35 @@ Test('missing branch: response is not valid', (assert) => {
   }
 
   assert.notOk(isResponse(response))
-  assert.end()
+
+  errors = response.errors.map(e => e.field)
+
+  assert.equal(errors.length, 1)
+  assert.deepEqual(errors, ['data.branch'])
 })
 
 Test('missing recps: response is not valid', (assert) => {
+  assert.plan(3)
+
   var response = {
     type: 'response',
     version: 'v1',
     root: '%MPB9vxHO0pvi2ve2wh6Do05ZrV7P6ZjUQ+IEYnzLfTs=.sha256',
+    branch: '%Lihvp+fMdt5CihjbOY6eZc0qCe0eKsrN2wfgXV2E3PM=.sha25',
+    accept: false
   }
 
   assert.notOk(isResponse(response))
-  assert.end()
+
+  errors = response.errors.map(e => e.field)
+
+  assert.equal(errors.length, 1)
+  assert.deepEqual(errors, ['data.recps'])
 })
 
 Test('missing accept: response is not valid', (assert) => {
+  assert.plan(3)
+
   var response = {
     type: 'response',
     version: 'v1',
@@ -80,5 +103,9 @@ Test('missing accept: response is not valid', (assert) => {
   }
 
   assert.notOk(isResponse(response))
-  assert.end()
+
+  errors = response.errors.map(e => e.field)
+
+  assert.equal(errors.length, 1)
+  assert.deepEqual(errors, ['data.accept'])
 })
