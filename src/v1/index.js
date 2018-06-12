@@ -1,16 +1,21 @@
 const nest = require('depnest')
 
-const isV1Invite = require('./invite/sync/isInvite')
-const isV1Response = require('./response/sync/isResponse')
+const isInvite = require('./invite/sync/isInvite')
+const isResponse = require('./response/sync/isResponse')
+const parseInvite = require('./invite/sync/parseInvite')
+const parseResponse = require('./response/sync/parseResponse')
+
 const { SCHEMA_VERSION } = require('./constants')
 
 module.exports = {
   gives: nest({
     'invite': [
-      'isInvite'
+      'isInvite',
+      'parseInvite'
     ],
     'response': [
-      'isResponse'
+      'isResponse',
+      'parseResponse'
     ],
     'version': [
       'string'
@@ -19,23 +24,17 @@ module.exports = {
   create: function (api) {
     return nest({
       invite: {
-        isInvite: isInvite
+        isInvite: isInvite,
+        parseInvite: parseInvite
       },
       response: {
-        isResponse: isResponse
+        isResponse: isResponse,
+        parseResponse: parseResponse
       },
       version: {
         string: versionString
       }
     })
-
-    function isInvite (obj) {
-      return isV1Invite(obj)
-    }
-
-    function isResponse (obj) {
-      return isV1Response(obj)
-    }
 
     function versionString (versions) {
       versions.V1_SCHEMA_VERSION_STRING = SCHEMA_VERSION

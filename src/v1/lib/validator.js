@@ -6,7 +6,7 @@ module.exports = function (schema) {
 
   return function validate (obj) {
     var result = validator(getContent(obj))
-    obj.errors = validator.errors
+    if (validator.errors) obj.errors = validator.errors
     return result
   }
 }

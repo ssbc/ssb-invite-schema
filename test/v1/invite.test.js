@@ -1,9 +1,9 @@
 const Test = require('tape')
 
-const { isInvite } = require('../../')
+const { isInvite, parseInvite } = require('../../')
 
 Test('invite is valid', (assert) => {
-  assert.plan(1)
+  assert.plan(2)
 
   var invite = {
     module: 'secrets',
@@ -21,7 +21,24 @@ Test('invite is valid', (assert) => {
     ]
   }
 
+  var msg = {
+    key: "%...",
+    value: {
+      author: "@...",
+      content: invite
+    },
+    timestamp: 123456789
+  }
+
   assert.ok(isInvite(invite))
+
+  var parsed = Object.assign({}, invite, {
+    key: msg.key,
+    author: msg.value.author,
+    timestamp: msg.timestamp
+  })
+
+  assert.deepEqual(parsed, parseInvite(msg))
 })
 
 Test('missing root: invite is not valid', (assert) => {
