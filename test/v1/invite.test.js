@@ -24,7 +24,7 @@ Test('invite is valid', (assert) => {
   var msg = {
     key: "%...",
     value: {
-      author: "@...",
+      author: "@EJq0UuR1gFJFs+8STga0AbYdt5IYQ4YsTr0niycscfg=.ed25519",
       content: invite
     },
     timestamp: 123456789
@@ -32,10 +32,14 @@ Test('invite is valid', (assert) => {
 
   assert.ok(isInvite(invite))
 
-  var parsed = Object.assign({}, invite, {
-    key: msg.key,
+  var dupInvite = Object.assign({}, invite)
+  delete dupInvite.recps
+
+  var parsed = Object.assign({}, dupInvite, {
+    id: msg.key,
     author: msg.value.author,
-    timestamp: msg.timestamp
+    timestamp: msg.timestamp,
+    recipient: '@MFz/AT3ldQoPaRPLjBSXTorLG1TZdyXtApJRmNNMjjg=.ed25519'
   })
 
   assert.deepEqual(parsed, parseInvite(msg))
