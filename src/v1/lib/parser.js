@@ -9,10 +9,12 @@ module.exports = function Parser (validator) {
     const { key, timestamp } = msg
     const { author } = msg.value
 
-    var recipient = content.recps.filter(recp => recp !== author)[0]
-    if (!recipient) return
-    recipient = typeof recipient === 'string' ? recipient : recipient.link
-    if (!isFeedId(recipient)) return
+    var recipient = content.recps.filter(recp => {
+      recipient = typeof recp === 'string' ? recp : recp.link
+      return recipient !== author
+    })[0]
+
+    if (!recipient && !isFeedId(recipient)) return null
     delete content.recps
 
     return Object.assign({}, {
