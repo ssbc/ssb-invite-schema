@@ -13,7 +13,7 @@ module.exports = {
     module: { type: 'string' },
     type: {
       type: 'string',
-      pattern: '^response$'
+      pattern: '^invite-reply$'
     },
     root: {
       oneOf: [

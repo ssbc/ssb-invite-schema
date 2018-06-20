@@ -1,14 +1,14 @@
 const Test = require('tape')
 
-const { isResponse } = require('../../')
+const { isReply } = require('../../')
 
-Test('response is valid', (assert) => {
+Test('reply is valid', (assert) => {
   assert.plan(1)
 
-  var response = {
+  var reply = {
     version: 'v1',
     module: 'secrets',
-    type: 'response',
+    type: 'invite-reply',
     root: '%MPB9vxHO0pvi2ve2wh6Do05ZrV7P6ZjUQ+IEYnzLfTs=.sha256',
     branch: '%Lihvp+fMdt5CihjbOY6eZc0qCe0eKsrN2wfgXV2E3PM=.sha256',
     accept: true,
@@ -22,14 +22,14 @@ Test('response is valid', (assert) => {
     ]
   }
 
-  assert.ok(isResponse(response))
+  assert.ok(isReply(reply))
 })
 
-Test('missing root: response is not valid', (assert) => {
+Test('missing root: reply is not valid', (assert) => {
   assert.plan(3)
 
-  var response = {
-    type: 'response',
+  var reply = {
+    type: 'invite-reply',
     version: 'v1',
     branch: '%Lihvp+fMdt5CihjbOY6eZc0qCe0eKsrN2wfgXV2E3PM=.sha25',
     accept: false,
@@ -39,19 +39,19 @@ Test('missing root: response is not valid', (assert) => {
     ]
   }
 
-  assert.notOk(isResponse(response))
+  assert.notOk(isReply(reply))
 
-  errors = response.errors.map(e => e.field)
+  errors = reply.errors.map(e => e.field)
 
   assert.equal(errors.length, 1)
   assert.deepEqual(errors, ['data.root'])
 })
 
-Test('missing branch: response is not valid', (assert) => {
+Test('missing branch: reply is not valid', (assert) => {
   assert.plan(3)
 
-  var response = {
-    type: 'response',
+  var reply = {
+    type: 'invite-reply',
     version: 'v1',
     root: '%MPB9vxHO0pvi2ve2wh6Do05ZrV7P6ZjUQ+IEYnzLfTs=.sha256',
     accept: true,
@@ -61,38 +61,38 @@ Test('missing branch: response is not valid', (assert) => {
     ]
   }
 
-  assert.notOk(isResponse(response))
+  assert.notOk(isReply(reply))
 
-  errors = response.errors.map(e => e.field)
+  errors = reply.errors.map(e => e.field)
 
   assert.equal(errors.length, 1)
   assert.deepEqual(errors, ['data.branch'])
 })
 
-Test('missing recps: response is not valid', (assert) => {
+Test('missing recps: reply is not valid', (assert) => {
   assert.plan(3)
 
-  var response = {
-    type: 'response',
+  var reply = {
+    type: 'invite-reply',
     version: 'v1',
     root: '%MPB9vxHO0pvi2ve2wh6Do05ZrV7P6ZjUQ+IEYnzLfTs=.sha256',
     branch: '%Lihvp+fMdt5CihjbOY6eZc0qCe0eKsrN2wfgXV2E3PM=.sha25',
     accept: false
   }
 
-  assert.notOk(isResponse(response))
+  assert.notOk(isReply(reply))
 
-  errors = response.errors.map(e => e.field)
+  errors = reply.errors.map(e => e.field)
 
   assert.equal(errors.length, 1)
   assert.deepEqual(errors, ['data.recps'])
 })
 
-Test('missing accept: response is not valid', (assert) => {
+Test('missing accept: reply is not valid', (assert) => {
   assert.plan(3)
 
-  var response = {
-    type: 'response',
+  var reply = {
+    type: 'invite-reply',
     version: 'v1',
     root: '%MPB9vxHO0pvi2ve2wh6Do05ZrV7P6ZjUQ+IEYnzLfTs=.sha256',
     branch: '%Lihvp+fMdt5CihjbOY6eZc0qCe0eKsrN2wfgXV2E3PM=.sha25',
@@ -102,9 +102,9 @@ Test('missing accept: response is not valid', (assert) => {
     ]
   }
 
-  assert.notOk(isResponse(response))
+  assert.notOk(isReply(reply))
 
-  errors = response.errors.map(e => e.field)
+  errors = reply.errors.map(e => e.field)
 
   assert.equal(errors.length, 1)
   assert.deepEqual(errors, ['data.accept'])

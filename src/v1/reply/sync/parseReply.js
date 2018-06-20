@@ -1,5 +1,5 @@
 const getContent = require('ssb-msg-content')
 const Parser = require('../../lib/parser')
-const isResponse = require('./isResponse')
+const isReply = require('./isReply')
 
-module.exports = Parser(isResponse)
+module.exports = Parser(isReply)

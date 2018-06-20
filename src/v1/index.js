@@ -1,9 +1,9 @@
 const nest = require('depnest')
 
 const isInvite = require('./invite/sync/isInvite')
-const isResponse = require('./response/sync/isResponse')
+const isReply = require('./reply/sync/isReply')
 const parseInvite = require('./invite/sync/parseInvite')
-const parseResponse = require('./response/sync/parseResponse')
+const parseReply = require('./reply/sync/parseReply')
 
 const { SCHEMA_VERSION } = require('./constants')
 
@@ -13,9 +13,9 @@ module.exports = {
       'isInvite',
       'parseInvite'
     ],
-    'response': [
-      'isResponse',
-      'parseResponse'
+    'reply': [
+      'isReply',
+      'parseReply'
     ],
     'version': [
       'string'
@@ -27,9 +27,9 @@ module.exports = {
         isInvite: isInvite,
         parseInvite: parseInvite
       },
-      response: {
-        isResponse: isResponse,
-        parseResponse: parseResponse
+      reply: {
+        isReply: isReply,
+        parseReply: parseReply
       },
       version: {
         string: versionString

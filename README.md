@@ -1,9 +1,9 @@
 # ssb-invites-schema
 
-Validations for type `invite` and `response` for ssb messages.
+Validations for type `invite` and `reply` for ssb messages.
 
 ```js
-const { isInvite, isResponse } = require('ssb-invites-schema')
+const { isInvite, isReply } = require('ssb-invites-schema')
 
 // Get something from your database
 server.get(key, (err, msg) => {
@@ -14,8 +14,8 @@ server.get(key, (err, msg) => {
     // ...
   }
 
-  // Check if its an invite response according to JSON schema
-  if (isResponse(content)) {
+  // Check if its an invite reply according to JSON schema
+  if (isReply(content)) {
     // ...
   }
 })
