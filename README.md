@@ -3,7 +3,7 @@
 Validations for type `invite` and `reply` for ssb messages.
 
 ```js
-const { isInvite, isReply } = require('ssb-invites-schema')
+const { isInvite, isReply } = require('scuttle-invite-schema')
 
 // Get something from your database
 server.get(key, (err, msg) => {
