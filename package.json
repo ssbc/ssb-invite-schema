@@ -1,5 +1,5 @@
 {
-  "name": "ssb-invites-schema",
+  "name": "scuttle-invite-schema",
   "version": "0.0.8",
   "description": "Schema for ssb invite types",
   "main": "index.js",
@@ -8,11 +8,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kgibb8/ssb-invite-schema.git"
+    "url": "https://github.com/ssbc/scuttle-invite-schema.git"
   },
-  "author": "Kyphae",
+  "author": "kyphae",
   "license": "ISC",
-  "homepage": "https://github.com/kgibb8/ssb-invite-schema#readme",
+  "homepage": "https://github.com/ssbc/scuttle-invite-schema#readme",
   "devDependencies": {
     "tap-spec": "^4.1.1",
     "tape": "^4.9.0"
