@@ -23,6 +23,14 @@ module.exports = {
     branch: {
       oneOf: [
         { $ref: '#/definitions/messageId' },
+        {
+          type: 'array',
+          items: {
+            oneOf: [
+              { $ref: '#/definitions/messageId' }
+            ]
+          }
+        }
       ]
     },
     accept: { type: 'boolean' },
