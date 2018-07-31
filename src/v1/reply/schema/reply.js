@@ -1,5 +1,5 @@
-const definitions = require('../../lib/definitions')
-const { SCHEMA_VERSION } = require('../../constants')
+const definitions = require('ssb-schema-definitions')
+const { SCHEMA_VERSION } = require('../../version')
 
 module.exports = {
   $schema: 'http://json-schema.org/schema#',
@@ -15,24 +15,8 @@ module.exports = {
       type: 'string',
       pattern: '^invite-reply$'
     },
-    root: {
-      oneOf: [
-        { $ref: '#/definitions/messageId' }
-      ]
-    },
-    branch: {
-      oneOf: [
-        { $ref: '#/definitions/messageId' },
-        {
-          type: 'array',
-          items: {
-            oneOf: [
-              { $ref: '#/definitions/messageId' }
-            ]
-          }
-        }
-      ]
-    },
+    root: { $ref: '#/definitions/root' },
+    branch: { $ref: '#/definitions/branch' },
     accept: { type: 'boolean' },
     body: { type: 'string' },
     mentions: { $ref: '#/definitions/mentions/any' },

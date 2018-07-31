@@ -6,7 +6,7 @@ Test('reply is valid', (assert) => {
   assert.plan(1)
 
   var reply = {
-    version: 'v1',
+    version: '1',
     module: 'secrets',
     type: 'invite-reply',
     root: '%MPB9vxHO0pvi2ve2wh6Do05ZrV7P6ZjUQ+IEYnzLfTs=.sha256',
@@ -30,7 +30,7 @@ Test('missing root: reply is not valid', (assert) => {
 
   var reply = {
     type: 'invite-reply',
-    version: 'v1',
+    version: '1',
     branch: '%Lihvp+fMdt5CihjbOY6eZc0qCe0eKsrN2wfgXV2E3PM=.sha25',
     accept: false,
     recps: [
@@ -52,7 +52,7 @@ Test('missing branch: reply is not valid', (assert) => {
 
   var reply = {
     type: 'invite-reply',
-    version: 'v1',
+    version: '1',
     root: '%MPB9vxHO0pvi2ve2wh6Do05ZrV7P6ZjUQ+IEYnzLfTs=.sha256',
     accept: true,
     recps: [
@@ -74,7 +74,7 @@ Test('missing recps: reply is not valid', (assert) => {
 
   var reply = {
     type: 'invite-reply',
-    version: 'v1',
+    version: '1',
     root: '%MPB9vxHO0pvi2ve2wh6Do05ZrV7P6ZjUQ+IEYnzLfTs=.sha256',
     branch: '%Lihvp+fMdt5CihjbOY6eZc0qCe0eKsrN2wfgXV2E3PM=.sha25',
     accept: false
@@ -93,7 +93,7 @@ Test('missing accept: reply is not valid', (assert) => {
 
   var reply = {
     type: 'invite-reply',
-    version: 'v1',
+    version: '1',
     root: '%MPB9vxHO0pvi2ve2wh6Do05ZrV7P6ZjUQ+IEYnzLfTs=.sha256',
     branch: '%Lihvp+fMdt5CihjbOY6eZc0qCe0eKsrN2wfgXV2E3PM=.sha25',
     recps: [

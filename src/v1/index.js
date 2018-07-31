@@ -5,7 +5,7 @@ const isReply = require('./reply/sync/isReply')
 const parseInvite = require('./invite/sync/parseInvite')
 const parseReply = require('./reply/sync/parseReply')
 
-const { SCHEMA_VERSION } = require('./constants')
+const { SCHEMA_VERSION } = require('./version')
 
 module.exports = {
   gives: nest({
