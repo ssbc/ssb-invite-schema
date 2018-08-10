@@ -81,3 +81,9 @@ Test('missing recps: invite is not valid', (assert) => {
   assert.equal(errors.length, 1)
   assert.deepEqual(errors, ['data.recps'])
 })
+
+Test('undefined: invite is not valid', (assert) => {
+  assert.plan(1)
+
+  assert.notOk(isInvite(undefined))
+})
